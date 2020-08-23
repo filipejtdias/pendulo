@@ -1,0 +1,46 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href='/static/style.css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1>Habemus site para o pendulo carago</h1>
+    <div>
+        <iframe src="http://89.115.123.117:60000/" title="Live Feed" width="640" height="480" scrolling="no" frameborder="0"></iframe>
+    </div>
+    <div>
+        <h4>Lights</h4>
+        <button> <a href="/light?action=on">On</a></button>
+        <button> <a href="/light?action=off">Off</a></button>
+    </div>
+    <div>
+        <h4>Move</h4>
+        <form action="/move" method="get">
+
+            <input type="radio" id="0" name="direction" value="0" required>
+            <label for="0">Forward</label>
+
+            <input type="radio" id="1" name="direction" value="1">
+            <label for="1">Backward</label>
+
+            <input type="radio" id="2" name="direction" value="2">
+            <label for="2">to photodiode</label><br>
+
+            <label for="deltaX">DeltaX [1:50.0]</label>
+            <input type="text" id="deltaX" name="deltaX" required><br>
+
+            <label for="speed">Speed [1.0:50.0]</label>
+            <input type="text" id="speed" name="speed" required><br>
+
+            <label for="acceleration">Acceleration [1.0:150.0]</label>
+            <input type="text" id="acceleration" name="acceleration" required><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
