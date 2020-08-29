@@ -17,6 +17,15 @@ def light():
 	run(script)
 	return index()
 
+@app.route('/laser', methods=['GET'])
+def laser():
+	
+	action = request.args.get('action')
+	
+	script="python scripts/laser.py {}".format(action)
+	run(script)
+	return index()
+
 @app.route('/move', methods=['GET'])
 def move():
 
