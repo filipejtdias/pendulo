@@ -48,6 +48,16 @@ def move():
 	run(script)
 	return index()
 
+@app.route('/stream')
+def stream():
+    def generate():
+        with open('logs/minicom.log') as f:
+            while True:
+                yield f.read()
+                sleep(1)
+
+    return app.response_class(generate(), mimetype='text/plain')
+
 def run(script):
 	app.logger.debug(script)
 	os.system(script)
