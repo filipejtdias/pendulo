@@ -9,19 +9,23 @@
 </head>
 <body>
     <h1>Habemus site para o pendulo carago</h1>
+    
     <div>
         <iframe src="http://89.115.123.117:60000/" title="Live Feed" width="640" height="480" scrolling="no" frameborder="0"></iframe>
     </div>
+    
     <div>
         <h4>Lights</h4>
         <button> <a href="/light?action=on">On</a></button>
         <button> <a href="/light?action=off">Off</a></button>
     </div>
+    
     <div>
         <h4>Laser</h4>
         <button> <a href="/laser?action=on">On</a></button>
         <button> <a href="/laser?action=off">Off</a></button>
     </div>
+
     <div>
         <h4>Move</h4>
         <form action="/move" method="get">
@@ -36,16 +40,100 @@
             <label for="2">to photodiode</label><br>
 
             <label for="deltaX">DeltaX [1:50.0]</label>
-            <input type="text" id="deltaX" name="deltaX" required><br>
+            <input type="text" id="deltaX" name="deltaX" value="10" required><br>
 
             <label for="speed">Speed [1.0:50.0]</label>
-            <input type="text" id="speed" name="speed" required><br>
+            <input type="text" id="speed" name="speed" value="10" required><br>
 
             <label for="acceleration">Acceleration [1.0:150.0]</label>
-            <input type="text" id="acceleration" name="acceleration" required><br>
+            <input type="text" id="acceleration" name="acceleration" value="10" required><br>
 
             <input type="submit" value="Submit">
         </form>
+    </div>
+    
+    <div>
+        <h4>Set Parameters</h4>
+        <form action="/set" method="get">
+
+            <input type="hidden" id="0" name="action" value="0" />
+
+            <label for="value">Maximum Position [40.0:60.0]</label>
+            <input type="text" id="value" name="value" value ="53.45" required>
+
+            <input type="submit" value="Submit">
+        </form>
+        
+        <form action="/set" method="get">
+
+            <input type="hidden" id="1" name="action" value="1" />
+
+            <label for="value">Sphere Diameter [1.0:20.0]</label>
+            <input type="text" id="value" name="value" value ="5.7080" required>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <form action="/set" method="get">
+
+            <input type="hidden" id="2" name="action" value="2" />
+
+            <label for="value">Pendulum length [1.0:10.0]</label>
+            <input type="text" id="value" name="value" value ="1.705540" required>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <form action="/set" method="get">
+
+            <input type="hidden" id="3" name="action" value="3" />
+
+            <label for="value">Origin position [-3.0:4.0]</label>
+            <input type="text" id="value" name="value" value ="0.8" required>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <form action="/set" method="get">
+
+            <input type="hidden" id="4" name="action" value="4" />
+
+            <label for="value">Vertical position [15.0:25.0]</label>
+            <input type="text" id="value" name="value" value ="27.79" required>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <form action="/set" method="get">
+
+            <input type="hidden" id="5" name="action" value="5" />
+
+            <label for="value">Photodiode position [15.0:35.0]</label>
+            <input type="text" id="value" name="value" value ="30.35" required>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <form action="/set" method="get">
+
+            <input type="hidden" id="6" name="action" value="6" />
+
+            <label for="value">Pulley Diameter [1.0:4.0]</label>
+            <input type="text" id="value" name="value" value ="3.0429" required>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <form action="/set" method="get">
+
+            <input type="hidden" id="7" name="action" value="7" />
+
+            <label for="value">ID string [max lenght of 32 characters]</label>
+            <input type="text" id="value" name="value" required>
+
+            <input type="submit" value="Submit">
+        </form>
+
     </div>
 </body>
 </html>

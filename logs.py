@@ -1,12 +1,11 @@
 import config as CONFIG
 import os
 
-def start():
-	device = CONFIG.PENDULO.SERIAL_PORT
-	script = "sudo minicom -D {} -C tee ~/pendulo/logs/minicom.log >> /dev/null &".format(device)
-	run(script)
+device = CONFIG.PENDULO.SERIAL_PORT
+logs_path = CONFIG.PROJECT.LOGS_PATH
 
-def run(script):
-	os.system(script)
+script = "sudo minicom -D {} -C tee {}/minicom.log >> /dev/null &".format(device, logs_path)
 
-start
+print(script)
+
+os.system(script)

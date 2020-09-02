@@ -1,4 +1,4 @@
-import os, sys, inspect, serial, time
+import os, sys, inspect, serial
 current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, parent_dir) 
@@ -35,6 +35,8 @@ class Main:
             try:
                 ser.flushInput() #flush input buffer, discarding all its contents
                 ser.flushOutput()#flush output buffer, aborting current output
+
+                COMMAND = COMMAND + "\r" # Simulate Enter
 
                 write_data = COMMAND.encode('utf-8')
 
