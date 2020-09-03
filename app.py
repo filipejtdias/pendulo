@@ -7,7 +7,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    server = CONFIG.SERVER.PUBLIC_IP
+    cam_port = CONFIG.PENDULO.CAM_PORT
+    cam_url = "http://{}:{}/".format(server, cam_port)
+    return render_template('index.html', cam_url=cam_url)
 
 @app.route('/setup', methods=['GET'])
 def setup():
