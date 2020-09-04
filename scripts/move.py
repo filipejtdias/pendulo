@@ -1,15 +1,17 @@
 import sys
 import pendulo as PENDULO
 
-_direction = sys.argv[1]
+def action_from(argument): 
+    switcher = { 
+        "0": "forward", 
+        "1": "backward",
+        "2": "to photodiode"
+    } 
+  
+    return switcher.get(argument, "NaN")
 
-direction = ""
-if _direction == "0": # forward
-	direction = "forward"
-elif _direction == "1": # backward
-	direction = "backward"
-elif _direction == "2": # to photodiode
-	direction = "'to photodiode'"
+_direction = sys.argv[1]
+direction = action_from(_direction)
 
 deltaX = sys.argv[2]
 speed = sys.argv[3]
