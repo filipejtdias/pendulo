@@ -10,4 +10,4 @@ config_file = CONFIG.PENDULO.SETUP_FILENAME
 COMMAND = "sudo picpgm -p_code {} && sudo picpgm -p_cfg {}".format(config_file, config_file)
 
 print("--DEBUG--\n{}".format(COMMAND))
-# os.system(COMMAND)
+os.system(COMMAND)
