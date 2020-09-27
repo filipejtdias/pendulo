@@ -28,6 +28,17 @@ def light():
     run(script_file)
     return index()
 
+@app.route('/stuff', methods=['POST'])
+def stuff():
+
+    if request.method == 'POST':
+        action = request.form.get('upvote')
+        app.logger.debug(action)
+        return index()
+    
+    # script_file="light.py {}".format(action)
+    # run(script_file)
+
 @app.route('/laser', methods=['GET'])
 def laser():
     
