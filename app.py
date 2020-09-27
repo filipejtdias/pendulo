@@ -59,6 +59,16 @@ def move():
     run(script_file)
     return index()
 
+@app.route('/cfg', methods=['GET'])
+def cfg():
+
+    deltaX = request.args.get('deltaX')
+    N = request.args.get('n')
+    
+    script_file="cfg.py {} {}".format(deltaX, N)
+    run(script_file)
+    return index()
+
 @app.route('/stream')
 def stream():
 
