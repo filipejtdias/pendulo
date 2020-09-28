@@ -56,6 +56,20 @@
             <input type="submit" value="Submit">
         </form>
     </div>
+
+    <div>
+        <h4>Origin</h4>
+        <form action="/origin" method="get">
+
+            <label for="speed">Speed [1.0:50.0]</label>
+            <input type="text" id="speed" name="speed" value="10" required><br>
+
+            <label for="acceleration">Acceleration [1.0:150.0]</label>
+            <input type="text" id="acceleration" name="acceleration" value="10" required><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
     
     <div>
         <h4>Set Parameters</h4>
@@ -104,7 +118,7 @@
             <input type="hidden" id="4" name="action" value="4" />
 
             <label for="value">Vertical position [15.0:25.0]</label>
-            <input type="text" id="value" name="value" value ="27.79" required>
+            <input type="text" id="value" name="value" value ="27.5" required>
 
             <input type="submit" value="Submit">
         </form>
@@ -145,10 +159,10 @@
         <form action="/cfg" method="get">
 
             <label for="deltaX">DeltaX [5:25]</label>
-            <input type="text" id="deltaX" name="deltaX" value="15" required><br>
+            <input type="text" id="deltaX" name="deltaX" value="25" required><br>
 
             <label for="n">N [10:1000]</label>
-            <input type="text" id="n" name="n" value="30" required><br>
+            <input type="text" id="n" name="n" value="5" required><br>
 
             <input type="submit" value="Submit">
         </form>

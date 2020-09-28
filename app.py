@@ -48,6 +48,16 @@ def laser():
     run(script_file)
     return index()
 
+@app.route('/origin', methods=['GET'])
+def origin():
+    
+    speed = request.args.get('speed')
+    acceleration = request.args.get('acceleration')
+    
+    script_file="origin.py {} {}".format(speed, acceleration)
+    run(script_file)
+    return index()
+
 @app.route('/set', methods=['GET'])
 def set():
     
