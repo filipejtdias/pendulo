@@ -6,34 +6,108 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js" integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous"></script>
+
+    <!-- Lights on -->
+    <script> 
+        function light_on() { $.post("/light/on", {}) }
+    </script>
+
+    <!-- Lights off -->
+    <script> 
+        function light_off() { $.post("/light/off", {}) }
+    </script>
+
+    <!-- Laser on -->
+    <script> 
+        function laser_on() { $.post("/laser/on", {}) }
+    </script>
+
+    <!-- Laser off -->
+    <script> 
+        function laser_off() { $.post("/laser/off", {}) }
+    </script>
+
+    <!-- Move -->
+    <script> 
+     $(function() {
+       $('#form_move').ajaxForm(function() { }); });
+    </script>
+
+    <!-- Origin -->
+    <script> 
+     $(function() {
+       $('#form_origin').ajaxForm(function() { }); });
+    </script>
+
+    <!-- Set -->
+    <script> 
+     $(function() {
+       $('#form_set_0').ajaxForm(function() { }); });
+    </script>
+    <script> 
+     $(function() {
+       $('#form_set_1').ajaxForm(function() { }); });
+    </script>
+    <script> 
+     $(function() {
+       $('#form_set_2').ajaxForm(function() { }); });
+    </script>
+    <script> 
+     $(function() {
+       $('#form_set_3').ajaxForm(function() { }); });
+    </script>
+    <script> 
+     $(function() {
+       $('#form_set_4').ajaxForm(function() { }); });
+    </script>
+    <script> 
+     $(function() {
+       $('#form_set_5').ajaxForm(function() { }); });
+    </script>
+    <script> 
+     $(function() {
+       $('#form_set_6').ajaxForm(function() { }); });
+    </script>
+    <script> 
+     $(function() {
+       $('#form_set_7').ajaxForm(function() { }); });
+    </script>
+
+    <!-- CFG -->
+    <script> 
+     $(function() {
+       $('#form_cfg').ajaxForm(function() { }); });
+    </script>
+
+
 </head>
 <body>
     <h1>Habemus site para o pendulo</h1>
     
+    <!-- Camera -->
     <!-- <div>
         <iframe src="{{cam_url}}" title="Live Feed" width="640" height="480" scrolling="no" frameborder="0"></iframe>
     </div> -->
-    
+
+    <!-- Light -->
     <div>
         <h4>Lights</h4>
-
-        <!-- <form action="/stuff" method="post">
-            <input type="submit" name="upvote" value="Upvote" />
-        </form> -->
-
-        <button> <a href="/light?action=on">On</a></button>
-        <button> <a href="/light?action=off">Off</a></button>
+        <button onclick=light_on()>On</a></button>
+        <button onclick=light_off()>Off</a></button>
     </div>
     
+    <!-- Laser -->
     <div>
         <h4>Laser</h4>
-        <button> <a href="/laser?action=on">On</a></button>
-        <button> <a href="/laser?action=off">Off</a></button>
+        <button onclick=laser_on()>On</a></button>
+        <button onclick=laser_off()>Off</a></button>
     </div>
 
+    <!-- Move -->
     <div>
         <h4>Move</h4>
-        <form action="/move" method="get">
+        <form id="form_move" action="/move" method="post">
 
             <input type="radio" id="0" name="direction" value="0" required>
             <label for="0">Forward</label>
@@ -57,9 +131,10 @@
         </form>
     </div>
 
+    <!-- Origin -->
     <div>
         <h4>Origin</h4>
-        <form action="/origin" method="get">
+        <form id="form_origin" action="/origin" method="post">
 
             <label for="speed">Speed [1.0:50.0]</label>
             <input type="text" id="speed" name="speed" value="10" required><br>
@@ -71,9 +146,10 @@
         </form>
     </div>
     
+    <!-- Set -->
     <div>
         <h4>Set Parameters</h4>
-        <form action="/set" method="get">
+        <form id="form_set_0" action="/set" method="post">
 
             <input type="hidden" id="0" name="action" value="0" />
 
@@ -83,7 +159,7 @@
             <input type="submit" value="Submit">
         </form>
         
-        <form action="/set" method="get">
+        <form id="form_set_1" action="/set" method="post">
 
             <input type="hidden" id="1" name="action" value="1" />
 
@@ -93,7 +169,7 @@
             <input type="submit" value="Submit">
         </form>
 
-        <form action="/set" method="get">
+        <form id="form_set_2" action="/set" method="post">
 
             <input type="hidden" id="2" name="action" value="2" />
 
@@ -103,7 +179,7 @@
             <input type="submit" value="Submit">
         </form>
 
-        <form action="/set" method="get">
+        <form id="form_set_3" action="/set" method="post">
 
             <input type="hidden" id="3" name="action" value="3" />
 
@@ -113,7 +189,7 @@
             <input type="submit" value="Submit">
         </form>
 
-        <form action="/set" method="get">
+        <form id="form_set_4" action="/set" method="post">
 
             <input type="hidden" id="4" name="action" value="4" />
 
@@ -123,7 +199,7 @@
             <input type="submit" value="Submit">
         </form>
 
-        <form action="/set" method="get">
+        <form id="form_set_5" action="/set" method="post">
 
             <input type="hidden" id="5" name="action" value="5" />
 
@@ -133,7 +209,7 @@
             <input type="submit" value="Submit">
         </form>
 
-        <form action="/set" method="get">
+        <form id="form_set_6" action="/set" method="post">
 
             <input type="hidden" id="6" name="action" value="6" />
 
@@ -143,7 +219,7 @@
             <input type="submit" value="Submit">
         </form>
 
-        <form action="/set" method="get">
+        <form id="form_set_7" action="/set" method="post">
 
             <input type="hidden" id="7" name="action" value="7" />
 
@@ -154,9 +230,10 @@
         </form>
     </div>
 
+    <!-- CFG -->
     <div>
         <h4>CFG</h4>
-        <form action="/cfg" method="get">
+        <form id="form_cfg" action="/cfg" method="post">
 
             <label for="deltaX">DeltaX [5:25]</label>
             <input type="text" id="deltaX" name="deltaX" value="25" required><br>
@@ -168,6 +245,7 @@
         </form>
     </div>
 
+    <!-- Program -->
     <div>
         <br><br>
         <h4>Programar dsPIC</h4>

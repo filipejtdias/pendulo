@@ -19,72 +19,57 @@ def setup():
     run(script_file)
     return index()
 
-@app.route('/light', methods=['GET'])
-def light():
-    
-    action = request.args.get('action')
+@app.route('/light/<action>', methods=['POST'])
+def light(action):
     
     script_file="light.py {}".format(action)
     run(script_file)
     return index()
 
-@app.route('/stuff', methods=['POST'])
-def stuff():
-
-    if request.method == 'POST':
-        action = request.form.get('upvote')
-        app.logger.debug(action)
-        return index()
-    
-    # script_file="light.py {}".format(action)
-    # run(script_file)
-
-@app.route('/laser', methods=['GET'])
-def laser():
-    
-    action = request.args.get('action')
+@app.route('/laser/<action>', methods=['POST'])
+def laser(action):
     
     script_file="laser.py {}".format(action)
     run(script_file)
     return index()
 
-@app.route('/origin', methods=['GET'])
-def origin():
-    
-    speed = request.args.get('speed')
-    acceleration = request.args.get('acceleration')
-    
-    script_file="origin.py {} {}".format(speed, acceleration)
-    run(script_file)
-    return index()
-
-@app.route('/set', methods=['GET'])
-def set():
-    
-    action = request.args.get('action')
-    value = request.args.get('value')
-    
-    script_file="set.py {} {}".format(action, value)
-    run(script_file)
-    return index()
-
-@app.route('/move', methods=['GET'])
+@app.route('/move', methods=['POST'])
 def move():
 
-    direction = request.args.get('direction')
-    deltaX = request.args.get('deltaX')
-    speed = request.args.get('speed')
-    acceleration = request.args.get('acceleration')
+    direction = request.form['direction']
+    deltaX = request.form['deltaX']
+    speed = request.form['speed']
+    acceleration = request.form['acceleration']
     
     script_file="move.py {} {} {} {}".format(direction, deltaX, speed, acceleration)
     run(script_file)
     return index()
 
-@app.route('/cfg', methods=['GET'])
+@app.route('/origin', methods=['POST'])
+def origin():
+    
+    speed = request.form['speed']
+    acceleration = request.form['acceleration']
+    
+    script_file="origin.py {} {}".format(speed, acceleration)
+    run(script_file)
+    return index()
+
+@app.route('/set', methods=['POST'])
+def set():
+    
+    action = request.form['action']
+    value = request.form['value']
+    
+    script_file="set.py {} {}".format(action, value)
+    run(script_file)
+    return index()
+
+@app.route('/cfg', methods=['POST'])
 def cfg():
 
-    deltaX = request.args.get('deltaX')
-    N = request.args.get('n')
+    deltaX = request.form['deltaX']
+    N = request.form['n']
     
     script_file="cfg.py {} {}".format(deltaX, N)
     run(script_file)
