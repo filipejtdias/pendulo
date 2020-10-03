@@ -1,4 +1,4 @@
-import os, sys, inspect, serial
+import os, sys, inspect, serial, time
 current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, parent_dir) 
@@ -23,12 +23,11 @@ class Main:
         ser.dsrdtr = False
         ser.writeTimeout = 0
 
-        # try:
-        #     ser.open()
+        try:
+            ser.open()
 
-        # except Exception, e:
-        #     print "error open serial port: " + str(e)
-        #     exit()
+        except Exception, e:
+            pass
 
         if ser.isOpen():
 
@@ -41,7 +40,21 @@ class Main:
                 write_data = COMMAND.encode('utf-8')
 
                 ser.write(write_data)
-                ser.close()
+
+                time.sleep(0.5)
+
+                numOfLines = 0
+
+                while True:
+                    response = ser.readline()
+                    print("read data: " + response)
+
+                    numOfLines = numOfLines + 1
+
+                    if (numOfLines >= 5):
+                        break
+
+                    ser.close()
 
             except Exception, e:
                 print "error communicating...: " + str(e)
