@@ -80,6 +80,14 @@
        $('#form_cfg').ajaxForm(function() { }); });
     </script>
 
+    <!-- Setup -->
+    <script> 
+        function setup() { 
+            if (confirm('Are you sure you want to reset the dsPIC?')) {
+                $.post("/setup", {}) 
+            }
+        }
+    </script>
 
 </head>
 <body>
@@ -249,7 +257,7 @@
     <div>
         <br><br>
         <h4>Programar dsPIC</h4>
-        <button> <a href="/setup">Program</a></button>
+        <button onclick=setup()>Program</a></button>
     </div>
 
 </body>

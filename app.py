@@ -12,13 +12,6 @@ def index():
     cam_url = "http://{}:{}/".format(server, cam_port)
     return render_template('index.html', cam_url=cam_url)
 
-@app.route('/setup', methods=['GET'])
-def setup():
-        
-    script_file="setup.py"
-    run(script_file)
-    return index()
-
 @app.route('/light/<action>', methods=['POST'])
 def light(action):
     
@@ -72,6 +65,13 @@ def cfg():
     N = request.form['n']
     
     script_file="cfg.py {} {}".format(deltaX, N)
+    run(script_file)
+    return index()
+
+@app.route('/setup', methods=['POST'])
+def setup():
+        
+    script_file="setup.py"
     run(script_file)
     return index()
 
